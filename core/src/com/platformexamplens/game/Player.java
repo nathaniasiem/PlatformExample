@@ -56,7 +56,12 @@ public class Player {
 
         this.x = this.x + this.dx;
     }
-
+public void fixedCollision(){
+    //are they colliding
+    if(bounds.overlaps(block)){
+        float width = Math.abs(bounds.y)
+    }
+}
     public void render(SpriteBatch batch) {
         // standing
         if (this.dx == 0) {
@@ -67,4 +72,5 @@ public class Player {
             batch.draw(run.getKeyFrame(elapsed, true), x, y);
         }
     }
+    
 }
