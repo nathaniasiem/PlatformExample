@@ -4,7 +4,10 @@
  */
 package com.platformexamplens.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  *
@@ -13,50 +16,60 @@ import com.badlogic.gdx.Screen;
 public class MainGame implements Screen {
     
     private PlatformExample game;
+    private World world;
     Player p1;
     
     public MainGame(PlatformExample game){
-        this.game = game;
-        p1 = 
+         this.game = game;
+        p1 = new Player(100,100);
     }
 
     @Override
     public void show() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void render(float deltaTime) {
-       //update the player
+       // update the player
         p1.update(deltaTime);
         
-        //draw the player
+        // get the SpriteBatch from the Game
+        SpriteBatch batch = game.getBatch();
         
+        //draw the player
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+	world.render();
+        batch.begin();
+	
+        p1.render(batch);
+        
+	batch.end();
     }
 
     @Override
     public void resize(int width, int height) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void pause() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void resume() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void hide() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
     public void dispose() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
     
     
